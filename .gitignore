@@ -1,0 +1,17 @@
+API/bin/
+API/Bin/
+API/obj/
+API/Obj/
+Application/bin/
+Application/Bin/
+Application/obj/
+Application/Obj/
+Domain/bin/
+Domain/Bin/
+Domain/obj/
+Domain/Obj/
+Persistence/bin/
+Persistence/Bin/
+Persistence/obj/
+Persistence/Obj/
+*/*.suo
