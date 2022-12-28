@@ -29,13 +29,13 @@ public class Update
         {
             if (request.Activity == null)
             {
-                return Unit.Value;
+                throw new ArgumentNullException(nameof(request));   
             }
 
             var entity = await _context.Activities.FindAsync(request.Activity.Id);
             if (entity == null)
             {
-                return Unit.Value;
+                throw new Exception("Entity not found");
             }
 
             entity.Title= request.Activity.Title;
