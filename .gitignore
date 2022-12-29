@@ -15,3 +15,5 @@ Persistence/Bin/
 Persistence/obj/
 Persistence/Obj/
 */*.suo
+.vs
+.vs/

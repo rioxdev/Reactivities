@@ -1,4 +1,5 @@
-﻿using Domain;
+﻿using AutoMapper;
+using Domain;
 using MediatR;
 using Persistence;
 using System;
@@ -19,17 +20,19 @@ public class Update
     public class Handler : IRequestHandler<Command>
     {
         private readonly DataContext _context;
+        private readonly IMapper _mapper;
 
-        public Handler(DataContext context)
+        public Handler(DataContext context, IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
 
         public async Task<Unit> Handle(Command request, CancellationToken cancellationToken)
         {
             if (request.Activity == null)
             {
-                throw new ArgumentNullException(nameof(request));   
+                throw new ArgumentNullException(nameof(request));
             }
 
             var entity = await _context.Activities.FindAsync(request.Activity.Id);
@@ -38,10 +41,8 @@ public class Update
                 throw new Exception("Entity not found");
             }
 
-            entity.Title= request.Activity.Title;
-            entity.Description= request.Activity.Description;
-            entity.Venue = request.Activity.Venue;
-             
+            _mapper.Map(request.Activity, entity);
+
             await _context.SaveChangesAsync();
 
             return Unit.Value;
