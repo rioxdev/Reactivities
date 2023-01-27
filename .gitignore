@@ -14,6 +14,12 @@ Persistence/bin/
 Persistence/Bin/
 Persistence/obj/
 Persistence/Obj/
-*/*.suo
+**/*.suo
 .vs
 .vs/
+**/.vs
+**/bin
+**/Bin
+**/obj
+**/Obj
+*/.suo

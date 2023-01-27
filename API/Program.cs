@@ -13,6 +13,7 @@ builder.Services.AddApplicationServices(builder.Configuration);
 
 var app = builder.Build();
 using var scope = app.Services.CreateScope();
+var logger = scope.ServiceProvider.GetService<ILogger<Program>>();
 
 try
 {
@@ -24,7 +25,7 @@ try
 }
 catch (Exception ex)
 {
-    var logger = scope.ServiceProvider.GetService<ILogger>();
+    
     logger.LogError(ex, "An error occured during migrations");
 }
 

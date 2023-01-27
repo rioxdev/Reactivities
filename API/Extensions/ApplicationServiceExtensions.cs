@@ -16,6 +16,7 @@ namespace API.Extensions
             services.AddSwaggerGen();
 
             services.AddDbContext<DataContext>(options => options.UseSqlite(config.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<DataContext>(ops => ops.UseNpgsql(config.GetConnectionString("DefaultConnection")));
             services.AddMediatR(typeof(List.Handler));
             services.AddAutoMapper(typeof(MapperProfiles));
             services.AddFluentValidationAutoValidation();
